@@ -1,0 +1,26 @@
+<div class="layout">
+  <form (ngSubmit)="loginEvent(loginData)" #loginData="ngForm">
+    <div class="loginForm" >
+      <span class="text-h2">User Login</span>
+
+      <div>
+        <label for="baseUrl"><span class="text-default">IEM-Url:</span> </label>
+        <input class="form-control" type="url" id="baseUrl" name="url" placeholder="IP-address:PORT" required autofocus ngModel/>
+      </div>
+      <div>
+
+        <label for="name"><span class="text-default">Username:</span> </label>
+        <input class="form-control"type="email" name="username" id="name" placeholder="IEM username" required ngModel/>
+      </div>
+      <div>
+        <label for="Password"><span class="text-default">Password:</span> </label>
+        <input class="form-control" type="password" name="password" id="Password" placeholder="Password" required ngModel/>
+    </div>
+    <div>
+      <ix-button class="m-1 submit" type="submit" variant="primary">Login</ix-button>
+    </div>
+     
+  </div>
+
+  </form>
+</div>

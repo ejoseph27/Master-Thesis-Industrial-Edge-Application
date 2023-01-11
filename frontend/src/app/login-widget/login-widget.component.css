@@ -1,0 +1,36 @@
+.submit {
+  align-items: center;
+  width: 100%;
+}
+
+.sc-ix-button-s{
+  width: 100% !important;
+}
+
+.layout {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.loginForm {
+  background-color: rgba(0, 0, 40, 0.15);
+  border-color: rgba(255, 255, 255, 0.5);
+  border-width: 1px;
+  border-style: solid;
+  width: 400px;
+  padding: 25px;
+}
+
+.loginForm>div>label {
+  flex: 2;
+}
+
+.loginForm>div>input {
+  flex: 4;
+}
+
+.loginForm>div {
+  margin: 15px 0px;
+  display: flex;
+}

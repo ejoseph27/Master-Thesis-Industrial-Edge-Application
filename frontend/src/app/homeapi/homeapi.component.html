@@ -1,0 +1,100 @@
+<div>
+    <div class="homePage">
+        <div>
+            <div class="title">
+                <span class="text-h2">Deploy Application to IEM</span>
+            </div>
+            <div class="uploadForm">
+                <div>
+                    <label class="form-label" htmlFor="appId">App-ID:</label>
+                    <ix-select (itemSelectionChange)="onSelectingApplication($event)" id="appId" name="appId"
+                        i-1-8n-placeholder="Application ID">
+                        <ix-select-item *ngFor="let x of project" value="{{x.id}}" label="{{x.title}}"></ix-select-item>
+                    </ix-select>
+                </div>
+
+
+                <div>
+                    <label class="form-label" for="Flow-Path">Flow file: </label>
+                    <input type="file" name="iemFlowFile" accept=".json" id="Flow-Path" placeholder="flow.json"
+                        (change)="onFileSelected($event)">
+                </div>
+
+                <div>
+                    <ix-button class="m-1" type="submit" (click)="deployToIem()" variant="primary"
+                        size="32">DEPLOY</ix-button>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            <div class="title">
+                <span class="text-h2">Update Flow to IED</span>
+            </div>
+            <div class="uploadForm">
+
+                <div>
+                    <label class="form-label" htmlFor="appId">Select IED:</label>
+                    <ix-select mode="multiple" (itemSelectionChange)="onSelectingAssets($event)" id="deviceId"
+                        name="deviceName" i-1-8n-placeholder="Select Device">
+                        <ix-select-item *ngFor="let x of devices" value="{{x.deviceId}}"
+                            label="{{x.deviceName}}"></ix-select-item>
+                    </ix-select>
+                </div>
+
+                <div>
+                    <label class="form-label" for="Flow-Path">Flow file: </label>
+                    <input type="file" name="iedFlowFile" accept=".json" id="Flow-Path" placeholder="flow.json"
+                        (change)="onFileSelected($event)">
+                </div>
+
+                <div>
+                    <ix-button class="m-1" type="submit" (click)="deployToIed()" variant="primary"
+                        size="32">UPDATE</ix-button>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="m-1">
+            <div class="title">
+                <span class="text-h2">Deploy Flow as application from IED</span>
+            </div>
+            <div class="uploadForm">
+
+                <div>
+                    <label class="form-label" htmlFor="appId">Select IED:</label>
+                    <ix-select (itemSelectionChange)="onSelectingDevice($event)" id="deviceId"
+                        name="deviceName" i-1-8n-placeholder="Select Device">
+                        <ix-select-item *ngFor="let x of devices" value="{{x.deviceId}}"label="{{x.deviceName}}"></ix-select-item>
+                    </ix-select>
+                    <div>
+                        <label class="form-label" htmlFor="appId">App-ID:</label>
+                        <ix-select (itemSelectionChange)="onSelectingApplication($event)" id="appId" name="appId"
+                            i-1-8n-placeholder="Application ID">
+                            <ix-select-item *ngFor="let x of project" value="{{x.id}}" label="{{x.title}}"></ix-select-item>
+                        </ix-select>
+                    </div>
+                </div>
+
+                <div>
+                    <ix-button class="m-1" type="submit" (click)="deployFlowApptoIem()" variant="primary"
+                        size="32">DEPLOY</ix-button>
+                </div>
+
+
+            </div>
+        </div>
+
+
+
+
+
+        
+    </div>
+    
+    <div *ngIf="isLoading" class="loader">
+        <ix-spinner size="large"></ix-spinner>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+version: "2.2"
+services:
+  backend:
+    image: angular-backend_new # Name of the built image
+    container_name: ubuntutwo_33080 # Name of the node-red container
+    mem_limit: 4000m
+    restart: unless-stopped # always restarts (see overview page 12 Industrial Edge Developer Guide)
+    environment:
+      - DOCKER_HOST=tcp://host.docker.internal:2375
+    privileged: true
+    build:
+      context: ./
+    ports:
+      - "33080:3000"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"   #container and host   
+    networks:                                 # define networks connected to 
+      proxy-redirect:   
+                        # Name of the network
+
+      ####### NETWORK CONFIG ######
+networks:
+  #Network interface configuration
+  proxy-redirect:
+   
+    # Reference 'proxy-redirect' as predefined network
+    external:
+      # Note: Please create the network manually as it is preexisting on Industrial Edge Device
+      name: proxy-redirect
+    driver: bridge
+    
+
+  #volumes:
+      #- /var/run/docker.sock:/var/run/docker.sock 
+      #- ./sys/fs/cgroup:/sys/fs/cgroup:ro
+    #network_mode: host
+    
