@@ -1,0 +1,29 @@
+
+# Define ubuntu version
+FROM eniocarboni/docker-ubuntu-systemd:latest
+
+RUN apt-get update -y
+RUN apt-get install curl -y
+
+# install docker in container
+
+RUN apt-get update && \
+    apt-get -qy full-upgrade && \
+    apt-get install -qy curl && \
+    curl -sSL https://get.docker.com/ | sh
+
+
+# Define container directory
+WORKDIR /usr/src/app
+
+#Copy package*.json #for npm install
+
+
+# Copy all files
+COPY ./tools/. .
+RUN install iectl /usr/bin/
+
+#Add Entry point
+
+# Set the script as the entrypoint
+ENTRYPOINT ["./script.sh"]

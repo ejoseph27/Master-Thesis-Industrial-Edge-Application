@@ -10,7 +10,7 @@ do
 		p) IE_PASSWORD=${OPTARG};;
 		a) APP_ID=${OPTARG};;
 		c) COMPOSE_PATH=${OPTARG};;
-		f) FLOW_PATH=${OPTARG};;
+		f) FLOW_PATH=${OPTARG};;word
 		
 		esac
 done
